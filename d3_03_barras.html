@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="d3.v7.min.js"></script>
+</head>
+<body>
+
+    <div class="canvas"></div>
+    <script>
+
+const arrayData = [8, 15, 34, 22, 38]
+const colors = ['darkgreen', 'purple', 'darkblue', 'orange', 'darkred']     
+        
+const canvas = d3.select('.canvas')
+const svg = canvas.append('svg')
+.attr('width', '80%')
+.attr('height', 300)
+
+const rect = svg.selectAll('rect')
+
+rect.data(arrayData)
+   .enter().append('rect')
+   .attr('width', '50')
+   .attr('height', (d, i) => {
+    console.log("d = ", d)
+    console.log("i = ", d)
+    return d *2})
+    .attr('x', (d, i) => i * 55)
+    .attr('y', (d, i) => 100 -(d * 2))
+   .attr('fill', (d, i) => colors[i])
+
+
+</script>
+</body>
+</html>

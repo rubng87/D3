@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="d3.v7.min.js"></script>
+</head>
+<body>
+
+    <div class="canvas"></div>
+    <script>
+
+// d3.json('https://jsonplaceholder.typicode.com/todos/1')
+d3.json('datos.json')
+   .then(data => {
+    console.log(data)
+    console.log(data[0].valor);
+
+    rect.data(data)
+    .enter().append('rect')
+    .attr('height', '50')
+    .attr('width', (d, i) => {
+    console.log("d =", d)
+    console.log("i=", i)
+    return d.valor * 5})
+    .attr('y', (d, i) => i * 55)
+    .attr('x', 10)
+    .attr('fill', (d, i) => {
+    return d.color })
+})
+      
+
+// const arrayData = [
+//     {valor: 8, color: 'darkgreen'},
+//     {valor: 15, color: 'purple'},
+//     {valor: 34, color: 'darkblue'},
+//     {valor: 22, color: 'orange'},
+//     {valor: 38, color: 'darkred'},
+// ]
+        
+      
+const canvas = d3.select('.canvas')
+const svg = canvas.append('svg')
+.attr('width', '90%')
+.attr('height', '300')
+
+const rect = svg.selectAll('rect')
+
+
+rect.data(Data)
+    .enter().append('rect')
+    .attr('height', '50')
+    .attr('width', (d, i) => {
+    console.log("d =", d)
+    console.log("i=", i)
+    return d.valor * 5})
+    .attr('y', (d, i) => i * 55)
+    .attr('x', 10)
+    .attr('fill', (d, i) => {
+    return d.color })
+
+
+</script>
+</body>
+</html>
